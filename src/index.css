@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.movie-item {
+  width: 80px;
+  height: 120px;
+  @apply flex flex-col rounded-sm shadow-sm p-2;
+}
+
+.movie-item__image {
+  width: 70px;
+  height: 90px;
+  object-fit: cover;
+}

@@ -7,12 +7,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const client = new ApolloClient({
-  uri: process.env.GRAPHQL_URL,
+  uri: process.env.REACT_APP_GRAPHQL_URL,
   cache: new InMemoryCache()
 });
 
