@@ -7,19 +7,26 @@ import Home from './components/pages/Home';
 
 function App() {
   const store = window.sessionStorage;
-  const getConfig = useQuery(QUERY_GET_CONFIG, {
+  useQuery(QUERY_GET_CONFIG, {
     onCompleted: (data) => {
       store.setItem('url', data.getConfig.images.secure_base_url);
     }
   });
   return (
-    <Router>
-      <Switch>
-        <Route path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+    <div className="bg-blue-300 w-screen min-h-screen">
+      <div className="bg-white container w-full md:max-w-md min-h-screen mx-auto">
+        <Router>
+          <Switch>
+            <Route path="">
+              
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </div>
   );
 }
 

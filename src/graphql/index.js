@@ -12,9 +12,9 @@ const QUERY_GET_UPCOMING_MOVIES = gql`
         release_date
         id
         title
-        popularity
         genre_ids
-        status
+        vote_count
+        vote_average
       }
     }
   }
