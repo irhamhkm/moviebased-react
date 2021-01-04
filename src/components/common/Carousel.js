@@ -1,19 +1,27 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { preloadImages } from '../../utilities';
 import MovieItem from './MovieItem';
 
 function Carousel(props) {
-  const { title, loading, error, data = []} = props;
+  const { title, data = [], url} = props;
   const [isDesktop, setIsDesktop] = useState(false);
   const [scrollLeftValue, setScrollLeftValue] = useState(0);
   const container = useRef(null);
+  const history = useHistory();
 
   useEffect(() => {
     if (window.innerWidth > 768) {
       setIsDesktop(true);
     }
   }, [])
+
+  useEffect(() => {
+    const arrImage = [`${process.env.PUBLIC_URL}/images/left-chevron.svg`, `${process.env.PUBLIC_URL}/images/right-chevron.svg`];
+    preloadImages(arrImage);
+  }, []);
 
   const scrollLeft = () => {
     container.current.scrollLeft -= 166;
@@ -23,7 +31,9 @@ function Carousel(props) {
     container.current.scrollLeft += 166;
     setScrollLeftValue(container.current.scrollLeft);
   }
-  const openSeeMore = () => {}
+  const openSeeMore = () => {
+    history.push(url);
+  }
 
   return (
     <div className="flex flex-col">
@@ -45,8 +55,6 @@ function Carousel(props) {
           </div>
         )}
         <div className="carousel-hide-scrollbar" ref={container}>
-          {loading && (<div>loading gan...</div>)}
-          {error && (<div>{error}!</div>)}
           {data && (
             <div className="carousel-content">
               {data.slice(0, 9).map((movie) => (
@@ -74,8 +82,6 @@ function Carousel(props) {
 
 Carousel.propTypes = {
   title: PropTypes.string.isRequired,
-  error: PropTypes.bool,
-  loading: PropTypes.bool,
   data: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

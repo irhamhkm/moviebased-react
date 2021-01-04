@@ -8,9 +8,30 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        getUpcomingMovies: {
+          keyArgs: false,
+          merge(existing = {}, incoming) {
+            console.log(existing);
+            console.log(incoming);
+            if (incoming.page <= existing.page) {
+              return existing.results || [];
+            } else {
+              return {...incoming, results: [...existing.results || [], ...incoming.results]};
+            }
+          }
+        }
+      }
+    }
+  }
+});
+
 const client = new ApolloClient({
   uri: process.env.REACT_APP_GRAPHQL_URL,
-  cache: new InMemoryCache()
+  cache
 });
 
 ReactDOM.render(
@@ -31,3 +52,5 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+export { client };

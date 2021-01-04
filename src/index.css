@@ -20,7 +20,7 @@
 }
 
 .carousel-hide-scrollbar {
-  height: calc(100% + 17px);
+  height: calc(100% + 50px);
   @apply overflow-x-scroll;
 }
 

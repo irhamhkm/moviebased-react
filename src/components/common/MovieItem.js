@@ -20,8 +20,10 @@ function MovieItem(props) {
           <img className="w-4 h-4" src={`${process.env.PUBLIC_URL}/images/star.svg`} alt="star"/>
           <div className="prose text-gray-800 ml-1">{data.vote_average}</div>
         </div>
-        <div className="prose font-medium text-gray-800 w-32 overflow-ellipsis">{data.title}</div>
-        <div className="prose prose-lg font-medium text-blue-700 mt-auto mb-5">+ Watchlist</div>
+        <div className="prose font-medium text-gray-800 max-h-20 w-32 overflow-ellipsis">{data.title}</div>
+        <button className="prose prose-lg font-medium text-blue-700 mt-auto rounded-sm focus:ring focus:border-blue-700 focus:outline-none">
+          + Watchlist
+        </button>
       </div>
     </div>
   );
