@@ -15,8 +15,6 @@ const cache = new InMemoryCache({
         getUpcomingMovies: {
           keyArgs: false,
           merge(existing = {}, incoming) {
-            console.log(existing);
-            console.log(incoming);
             if (incoming.page <= existing.page) {
               return existing.results || [];
             } else {

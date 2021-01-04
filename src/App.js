@@ -15,7 +15,7 @@ function App() {
   });
   return (
     <div className="bg-blue-300 min-h-screen">
-      <div className="bg-white container w-full md:max-w-md min-h-screen mx-auto">
+      <div className="bg-white container w-full max-w-md min-h-screen mx-auto">
         <Router>
           <Switch>
             <Route path="/upcoming">

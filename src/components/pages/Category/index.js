@@ -6,6 +6,7 @@ import { useQuery } from '@apollo/client';
 
 function Category(props) {
   const [queryResult, setQueryResult] = useState([]);
+  const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
   const { query } = props;
 
@@ -17,29 +18,34 @@ function Category(props) {
     fetchPolicy: 'network-only',
     onCompleted: (data) => {
       setQueryResult(Object.values(data)[0].results);
+      setTotalPages(Object.values(data)[0].total_pages);
     }
   });
 
   useEffect(() => {
+    let mounted = true;
     const handleScroll = () => {
       if ((window.innerHeight + Math.ceil(window.pageYOffset + 1)) >= document.body.offsetHeight) {
-        if (!loading && fetchMore) {
+        if (!loading && (page < totalPages)) {
           fetchMore({ variables: { page: page + 1 } });
           setPage((p) => (p + 1));
         }
       }
     }
-    window.addEventListener('scroll', handleScroll);
+    if (mounted) {
+      window.addEventListener('scroll', handleScroll);
+    }
     return function cleanup() {
       window.removeEventListener('scroll', handleScroll);
+      mounted = false;
     }
-  }, [page, fetchMore, loading]);
+  }, [page, totalPages, fetchMore, loading]);
 
   return (
     <div>
-      <div className="flex flex-row flex-wrap w-full justify-evenly pb-1">
+      <div className="grid gap-4 grid-cols-2 w-full justify-items-center p-4">
         {!!queryResult.length && queryResult.map((value) => (
-          <div className="m-3" key={value.id} >
+          <div key={value.id} >
             <MovieItem data={value} />
           </div>
         ))}
