@@ -1,11 +1,11 @@
 import React from 'react';
 
 function ImageWithPlaceholder(props) {
-  const { wrapperStyles, imageClass, src, alt } = props;
+  const { wrapperStyles, src, children } = props;
   return (
-    <div className="bg-blue-500 flex justify-center items-center" style={wrapperStyles}>
+    <div className="bg-blue-500 inline-flex justify-center items-center" style={wrapperStyles}>
       {src ? (
-        <img className={imageClass} src={src} alt={alt} />
+        children
       ) : (
         <span className="prose prose-2xl text-white text-center font-bold">No Image Available :(</span>
       )}

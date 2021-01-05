@@ -1,0 +1,12 @@
+.movie-item {
+  @apply w-full max-w-md rounded-sm h-48;
+}
+
+.movie-item__overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  @apply prose h-28 w-full;
+}

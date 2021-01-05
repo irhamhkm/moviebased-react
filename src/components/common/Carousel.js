@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { preloadImages } from '../../utilities';
-import MovieItem from './MovieItem';
+import CarouselItem from './CarouselItem';
 
 function Carousel(props) {
   const { title, data = [], url} = props;
@@ -37,7 +37,7 @@ function Carousel(props) {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-row justify-between px-3">
+      <div className="flex flex-row justify-between px-3 mb-3">
         <div className="prose prose-xl text-gray-800 font-medium">{title}</div>
         <div className="prose prose-xl text-blue-700 font-medium"onClick={() => { openSeeMore(); }}>See more</div>
       </div>
@@ -58,7 +58,7 @@ function Carousel(props) {
           {data && (
             <div className="carousel-content">
               {data.slice(0, 9).map((movie) => (
-                <MovieItem key={movie.id} data={movie}/>
+                <CarouselItem key={movie.id} data={movie}/>
               ))}
             </div>
           )}

@@ -2,41 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-.movie-item {
-  width: 154px;
-  height: 400px;
-  @apply bg-white flex flex-col rounded-sm shadow-md;
-}
-
-.movie-item__image {
-  width: 154px;
-  object-fit: cover;
-}
-
-.carousel-hide-scrollbar-container {
-  height: 405px;
-  overflow: hidden;
-  @apply relative;
-}
-
-.carousel-hide-scrollbar {
-  height: calc(100% + 50px);
-  @apply overflow-x-scroll;
-}
-
-.carousel-btn-left {
-  @apply bg-white absolute w-10 h-10 rounded-full flex justify-center items-center shadow left-1;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.carousel-btn-right {
-  @apply bg-white absolute w-10 h-10 rounded-full flex justify-center items-center shadow right-1;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.carousel-content {
-  @apply inline-flex flex-row space-x-3 px-3;
-  height: 405px;
-}
+@import './styles/carousel.css';
+@import './styles/movieItem.css';

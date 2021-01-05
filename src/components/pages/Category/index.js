@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types'
 
-import MovieItem from '../../common/MovieItem';
+// import CarouselItem from '../../common/CarouselItem';
 import { useQuery } from '@apollo/client';
+import CarouselItem from '../../common/CarouselItem';
+import MovieItem from '../../common/MovieItem';
 
 function Category(props) {
   const [queryResult, setQueryResult] = useState([]);
@@ -43,7 +45,7 @@ function Category(props) {
 
   return (
     <div>
-      <div className="grid gap-4 grid-cols-2 w-full justify-items-center p-4">
+      <div className="justify-items-center p-4">
         {!!queryResult.length && queryResult.map((value) => (
           <div key={value.id} >
             <MovieItem data={value} />
@@ -55,6 +57,7 @@ function Category(props) {
           <img src={`${process.env.PUBLIC_URL}/images/loading.svg`} alt="loading"/>
         </div>
       )}
+      {(error) && (<div></div>)}
     </div>
   );
 }
