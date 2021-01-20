@@ -17,9 +17,8 @@ const cache = new InMemoryCache({
           merge(existing = {}, incoming) {
             if (incoming.page <= existing.page) {
               return existing.results || [];
-            } else {
-              return {...incoming, results: [...existing.results || [], ...incoming.results]};
             }
+            return {...incoming, results: [...existing.results || [], ...incoming.results]};
           }
         }
       }

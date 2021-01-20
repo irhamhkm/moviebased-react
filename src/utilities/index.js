@@ -1,4 +1,4 @@
-export function imageUrlConstructor(path, size = 'original') {
+export function posterUrlConstructor(path, size = 'original') {
   const store = window.sessionStorage;
   const url = store.getItem('url');
   if (!path) {

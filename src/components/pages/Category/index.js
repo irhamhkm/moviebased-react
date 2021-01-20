@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types'
-
-// import CarouselItem from '../../common/CarouselItem';
 import { useQuery } from '@apollo/client';
-import CarouselItem from '../../common/CarouselItem';
+
 import MovieItem from '../../common/MovieItem';
 
 function Category(props) {
@@ -26,20 +24,24 @@ function Category(props) {
 
   useEffect(() => {
     let mounted = true;
-    const handleScroll = () => {
-      if ((window.innerHeight + Math.ceil(window.pageYOffset + 1)) >= document.body.offsetHeight) {
-        if (!loading && (page < totalPages)) {
-          fetchMore({ variables: { page: page + 1 } });
-          setPage((p) => (p + 1));
+    let handleScroll = null;
+    
+    if (mounted) {
+      handleScroll = () => {
+        if ((window.innerHeight + Math.ceil(window.pageYOffset + 1)) >= document.body.offsetHeight) {
+          if (!loading && (page < totalPages)) {
+            fetchMore({ variables: { page: page + 1 } });
+            setPage((p) => (p + 1));
+          }
         }
       }
-    }
-    if (mounted) {
       window.addEventListener('scroll', handleScroll);
+    } else {
+      window.removeEventListener('scroll', handleScroll);
     }
     return function cleanup() {
-      window.removeEventListener('scroll', handleScroll);
       mounted = false;
+      window.removeEventListener('scroll', handleScroll);
     }
   }, [page, totalPages, fetchMore, loading]);
 
@@ -47,7 +49,7 @@ function Category(props) {
     <div>
       <div className="justify-items-center p-4">
         {!!queryResult.length && queryResult.map((value) => (
-          <div key={value.id} >
+          <div key={value.id} className="mb-3">
             <MovieItem data={value} />
           </div>
         ))}

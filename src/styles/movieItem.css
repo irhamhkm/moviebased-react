@@ -1,5 +1,11 @@
 .movie-item {
-  @apply w-full max-w-md rounded-sm h-48;
+  @apply border border-gray-300 border-opacity-50 w-full max-w-md rounded-sm shadow-md;
+}
+
+.movie-item__image {
+  width: 92.5px;
+  height: 100%;
+  object-fit: cover;
 }
 
 .movie-item__overview {
@@ -8,5 +14,5 @@
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   overflow: hidden;
-  @apply prose h-28 w-full;
+  @apply prose w-full;
 }

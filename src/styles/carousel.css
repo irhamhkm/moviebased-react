@@ -2,7 +2,7 @@
 .carousel-item {
   width: 154px;
   height: 400px;
-  @apply bg-white flex flex-col rounded-sm shadow-md;
+  @apply bg-white border border-gray-300 border-opacity-50 flex flex-col rounded-sm shadow-md;
 }
 
 .carousel-item__image {

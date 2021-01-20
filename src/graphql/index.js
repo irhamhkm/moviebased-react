@@ -62,6 +62,7 @@ const QUERY_GET_CONFIG = gql`
     getConfig {
       images {
         secure_base_url
+        poster_sizes
       }
     }
   }
