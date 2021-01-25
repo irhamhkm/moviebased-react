@@ -41,10 +41,6 @@ CarouselItem.propTypes = {
     title: PropTypes.string.isRequired,
     poster_path: PropTypes.string,
     vote_average: PropTypes.number.isRequired,
-    vote_count: PropTypes.number.isRequired,
-    overview: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
-    genre_ids: PropTypes.arrayOf(PropTypes.number),
   })
 };
 

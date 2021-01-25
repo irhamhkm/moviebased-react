@@ -12,7 +12,25 @@ const cache = new InMemoryCache({
   typePolicies: {
     Query: {
       fields: {
-        getUpcomingMovies: {
+        upcomingMovies: {
+          keyArgs: false,
+          merge(existing = {}, incoming) {
+            if (incoming.page <= existing.page) {
+              return existing.results || [];
+            }
+            return {...incoming, results: [...existing.results || [], ...incoming.results]};
+          }
+        },
+        popularMovies: {
+          keyArgs: false,
+          merge(existing = {}, incoming) {
+            if (incoming.page <= existing.page) {
+              return existing.results || [];
+            }
+            return {...incoming, results: [...existing.results || [], ...incoming.results]};
+          }
+        },
+        topRatedMovies: {
           keyArgs: false,
           merge(existing = {}, incoming) {
             if (incoming.page <= existing.page) {
