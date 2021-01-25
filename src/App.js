@@ -11,7 +11,7 @@ function App() {
   const store = window.sessionStorage;
   useQuery(QUERY_GET_CONFIG, {
     onCompleted: (data) => {
-      store.setItem('url', data.getConfig.images.secure_base_url);
+      store.setItem('url', data.config.images.secure_base_url);
     }
   });
   return (

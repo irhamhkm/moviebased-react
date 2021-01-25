@@ -4,7 +4,7 @@ function ImageWithPlaceholder(props) {
   const { wrapperStyles, src, children } = props;
   return (
     <div className="inline-flex flex-none justify-center items-center" style={wrapperStyles}>
-      <div className="bg-blue-500 w-full h-full inline-flex flex-none justify-center items-center text-left">
+      <div className="bg-gray-300 w-full h-full inline-flex flex-none justify-center items-center text-left">
         {src ? (
           children
         ) : (

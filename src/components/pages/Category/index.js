@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import MovieItem from '../../common/MovieItem';
+import { publicImageUrl } from '../../../utilities';
 
 function Category(props) {
   const [queryResult, setQueryResult] = useState([]);
@@ -56,7 +57,7 @@ function Category(props) {
       </div>
       {(loading) && (
         <div className="flex justify-center">
-          <img src={`${process.env.PUBLIC_URL}/images/loading.svg`} alt="loading"/>
+          <img src={publicImageUrl('loading.svg')} alt="loading"/>
         </div>
       )}
       {(error) && (<div></div>)}

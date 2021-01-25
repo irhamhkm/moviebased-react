@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 const QUERY_GET_UPCOMING_MOVIES = gql`
   query getUpcomingMovies($page: Int!) {
-    getUpcomingMovies(page: $page) {
+    upcomingMovies(page: $page) {
       total_pages
       page
       results {
@@ -21,7 +21,7 @@ const QUERY_GET_UPCOMING_MOVIES = gql`
 
 const QUERY_GET_POPULAR_MOVIES = gql`
   query getPopularMovies($page: Int!) {
-    getPopularMovies(page: $page) {
+    popularMovies(page: $page) {
       total_pages
       page
       results {
@@ -40,7 +40,7 @@ const QUERY_GET_POPULAR_MOVIES = gql`
 
 const QUERY_GET_TOP_RATED_MOVIES = gql`
   query getTopRatedMovies($page: Int!) {
-    getTopRatedMovies(page: $page) {
+    topRatedMovies(page: $page) {
       total_pages
       page
       results {
@@ -59,7 +59,7 @@ const QUERY_GET_TOP_RATED_MOVIES = gql`
 
 const QUERY_GET_CONFIG = gql`
   query getConfig {
-    getConfig {
+    config {
       images {
         secure_base_url
         poster_sizes

@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { preloadImages } from '../../utilities';
+import { preloadImages, publicImageUrl } from '../../../utilities';
 import CarouselItem from './CarouselItem';
+import CarouselLoading from './CarouselLoading';
 
 function Carousel(props) {
-  const { title, data = [], url} = props;
+  const { title, loading, error, data = [], url} = props;
+  const placeholderData = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [isDesktop, setIsDesktop] = useState(false);
   const [scrollLeftValue, setScrollLeftValue] = useState(0);
   const container = useRef(null);
@@ -19,7 +21,7 @@ function Carousel(props) {
   }, [])
 
   useEffect(() => {
-    const arrImage = [`${process.env.PUBLIC_URL}/images/left-chevron.svg`, `${process.env.PUBLIC_URL}/images/right-chevron.svg`];
+    const arrImage = [publicImageUrl('left-chevron.svg'), publicImageUrl('right-chevron.svg')];
     preloadImages(arrImage);
   }, []);
 
@@ -42,20 +44,28 @@ function Carousel(props) {
         <div className="prose prose-xl text-blue-700 font-medium"onClick={() => { openSeeMore(); }}>See more</div>
       </div>
       <div className="carousel-hide-scrollbar-container">
-        {(data && isDesktop && (scrollLeftValue !== 0)) && (
+        {(!error) && (data && isDesktop && (scrollLeftValue !== 0)) && (
           <div
             className="carousel-btn-left"
             onClick={() => { scrollLeft(); }}
           >
             <img
               className="w-5 h-5"
-              src={`${process.env.PUBLIC_URL}/images/left-chevron.svg`}
+              src={publicImageUrl('left-chevron.svg')}
               alt="left arrow"
             />
           </div>
         )}
         <div className="carousel-hide-scrollbar" ref={container}>
-          {data && (
+          {loading && (
+            <div className="carousel-content">
+              {placeholderData.map((data) => (
+                <CarouselLoading key={data} />
+              ))}
+            </div>
+          )}
+          {error && (<div>Error :(</div>)}
+          {((!loading && !error) && data) && (
             <div className="carousel-content">
               {data.slice(0, 9).map((movie) => (
                 <CarouselItem key={movie.id} data={movie}/>
@@ -63,14 +73,14 @@ function Carousel(props) {
             </div>
           )}
         </div>
-        {(data && isDesktop && (scrollLeftValue !== 1058)) && (
+        {(!error) && (data && isDesktop && (scrollLeftValue !== 1058)) && (
           <div
             className="carousel-btn-right"
             onClick={() => { scrollRight(); }}
           >
             <img
               className="w-5 h-5"
-              src={`${process.env.PUBLIC_URL}/images/right-chevron.svg`}
+              src={publicImageUrl('right-chevron.svg')}
               alt="right arrow"
             />
           </div>
@@ -82,6 +92,8 @@ function Carousel(props) {
 
 Carousel.propTypes = {
   title: PropTypes.string.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.string,
   data: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

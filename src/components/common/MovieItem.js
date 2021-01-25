@@ -1,5 +1,5 @@
 import React from 'react';
-import { posterUrlConstructor } from '../../utilities';
+import { posterUrlConstructor, publicImageUrl } from '../../utilities';
 import ImageWithPlaceholder from '../hoc/ImageWithPlaceholder';
 
 function MovieItem(props) {
@@ -14,7 +14,7 @@ function MovieItem(props) {
         <div className="p-4">
           <span className="prose font-medium">{title}</span>
           <span className="flex items-center">
-              <img className="w-4 h-4" src={`${process.env.PUBLIC_URL}/images/star.svg`} alt="star"/>
+              <img className="w-4 h-4" src={publicImageUrl('star.svg')} alt="star"/>
               <span className="prose font-medium">&nbsp;{vote_average}</span>
             </span>
           <div className="movie-item__overview">{overview}</div>

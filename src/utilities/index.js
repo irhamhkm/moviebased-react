@@ -14,3 +14,7 @@ export function preloadImages(arrImage) {
     window[image] = cache;
   });
 }
+
+export function publicImageUrl(url) {
+  return `${process.env.PUBLIC_URL}/images/${url}`;
+}

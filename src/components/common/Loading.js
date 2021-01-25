@@ -1,9 +1,10 @@
 import React from 'react';
+import { publicImageUrl } from '../../utilities';
 
 function Loading() {
   return (
     <div>
-      <img src={`${process.env.PUBLIC_URL}/images/loading.svg`} alt="loading..."/>
+      <img src={publicImageUrl('loading.svg')} alt="loading..."/>
     </div>
   );
 }
