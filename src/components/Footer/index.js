@@ -13,7 +13,7 @@ function Footer() {
         />
       </div>
       <div className="ml-8">
-        <span className="prose prose-xl text-white font-normal block">And, this web by</span>
+        <span className="prose prose-xl text-white font-normal block">This web by</span>
         <span className="prose prose-xl text-black font-medium">Irham N&nbsp;</span>
         <span className="prose prose-xl text-white font-normal inline-flex items-center">with&nbsp;
           <img

@@ -15,7 +15,7 @@ function Carousel(props) {
   const history = useHistory();
 
   useEffect(() => {
-    if (window.innerWidth > 768) {
+    if (!(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))) {
       setIsDesktop(true);
     }
   }, [])
@@ -38,9 +38,9 @@ function Carousel(props) {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-8">
       <div className="flex flex-row justify-between px-3 mb-3">
-        <div className="prose prose-xl text-gray-800 font-medium">{title}</div>
+        <div className="carousel-title">{title}</div>
         <div className="prose prose-xl text-blue-700 font-medium"onClick={() => { openSeeMore(); }}>See more</div>
       </div>
       <div className="carousel-hide-scrollbar-container">
