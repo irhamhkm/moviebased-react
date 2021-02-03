@@ -3,7 +3,8 @@ import { useQuery } from '@apollo/client';
 
 import { QUERY_GET_POPULAR_MOVIES, QUERY_GET_TOP_RATED_MOVIES, QUERY_GET_UPCOMING_MOVIES } from '../../../graphql';
 
-import Carousel from '../../common/Carousel/Carousel';
+import Carousel from '../../Carousel/';
+import Footer from '../../Footer';
 // import Showcase from '../common/Showcase';
 
 function Home() {
@@ -46,6 +47,7 @@ function Home() {
         data={topRatedMovies.results}
         url={'/top-rated'}
       />
+      <Footer />
     </div>
   );
 };

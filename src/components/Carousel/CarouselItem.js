@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import ImageWithPlaceholder from '../../hoc/ImageWithPlaceholder';
-import { posterUrlConstructor, preloadImages, publicImageUrl } from '../../../utilities';
+import ImageWithPlaceholder from '../hoc/ImageWithPlaceholder';
+import { posterUrlConstructor, preloadImages, publicImageUrl } from '../../utilities';
 
 function CarouselItem(props) {
   const { data } = props;

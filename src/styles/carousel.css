@@ -30,13 +30,13 @@
 }
 
 .carousel-btn-left {
-  @apply bg-white absolute w-10 h-10 rounded-full flex justify-center items-center shadow left-1;
+  @apply bg-white absolute w-10 h-10 rounded-sm flex justify-center items-center shadow left-1;
   top: 50%;
   transform: translateY(-50%);
 }
 
 .carousel-btn-right {
-  @apply bg-white absolute w-10 h-10 rounded-full flex justify-center items-center shadow right-1;
+  @apply bg-white absolute w-10 h-10 rounded-sm flex justify-center items-center shadow right-1;
   top: 50%;
   transform: translateY(-50%);
 }

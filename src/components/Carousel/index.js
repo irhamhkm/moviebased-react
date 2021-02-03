@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { preloadImages, publicImageUrl } from '../../../utilities';
+import { preloadImages, publicImageUrl } from '../../utilities';
 import CarouselItem from './CarouselItem';
 import CarouselLoading from './CarouselLoading';
 

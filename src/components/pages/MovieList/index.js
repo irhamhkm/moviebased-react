@@ -5,7 +5,7 @@ import { useQuery } from '@apollo/client';
 import MovieItem from '../../common/MovieItem';
 import { publicImageUrl } from '../../../utilities';
 
-function Category(props) {
+function MovieList(props) {
   const [queryResult, setQueryResult] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [page, setPage] = useState(1);
@@ -69,4 +69,4 @@ function Category(props) {
 //   query: PropTypes.
 // }
 
-export default Category;
+export default MovieList;

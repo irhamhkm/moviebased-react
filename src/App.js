@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 
 import { QUERY_GET_CONFIG, QUERY_GET_UPCOMING_MOVIES, QUERY_GET_POPULAR_MOVIES, QUERY_GET_TOP_RATED_MOVIES } from './graphql';
 import Home from './components/pages/Home';
-import Category from './components/pages/Category';
+import MovieList from './components/pages/MovieList';
 import WithNavbar from './components/hoc/WithNavbar';
 
 function App() {
@@ -21,14 +21,14 @@ function App() {
           <Switch>
             <Route path="/upcoming">
               <WithNavbar>
-                <Category query={QUERY_GET_UPCOMING_MOVIES} />
+                <MovieList query={QUERY_GET_UPCOMING_MOVIES} />
               </WithNavbar>
             </Route>
             <Route path="/popular">
-              <Category query={QUERY_GET_POPULAR_MOVIES} />
+              <MovieList query={QUERY_GET_POPULAR_MOVIES} />
             </Route>
             <Route path="/top-rated">
-              <Category query={QUERY_GET_TOP_RATED_MOVIES} />
+              <MovieList query={QUERY_GET_TOP_RATED_MOVIES} />
             </Route>
             <Route path="/">
               <WithNavbar>
