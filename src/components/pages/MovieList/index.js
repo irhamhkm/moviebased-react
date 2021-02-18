@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 // import PropTypes from 'prop-types'
 import { useQuery } from '@apollo/client';
 
-import MovieItem from '../../common/MovieItem';
+import MovieItem from '../../MovieItem';
 import { publicImageUrl } from '../../../utilities';
 
 function MovieList(props) {
@@ -55,7 +55,7 @@ function MovieList(props) {
           </div>
         ))}
       </div>
-      {(loading) && (
+      {(loading && (page === 1)) && (
         <div className="flex justify-center">
           <img src={publicImageUrl('loading.svg')} alt="loading"/>
         </div>
