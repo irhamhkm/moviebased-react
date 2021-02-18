@@ -1,0 +1,18 @@
+.movie-item {
+  @apply border border-gray-300 border-opacity-50 w-full max-w-md rounded-sm shadow-md;
+}
+
+.movie-item__image {
+  width: 92.5px;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movie-item__overview {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  @apply prose w-full;
+}

@@ -1,14 +1,60 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
+
 import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        upcomingMovies: {
+          keyArgs: false,
+          merge(existing = {}, incoming) {
+            if (incoming.page <= existing.page) {
+              return existing.results || [];
+            }
+            return {...incoming, results: [...existing.results || [], ...incoming.results]};
+          }
+        },
+        popularMovies: {
+          keyArgs: false,
+          merge(existing = {}, incoming) {
+            if (incoming.page <= existing.page) {
+              return existing.results || [];
+            }
+            return {...incoming, results: [...existing.results || [], ...incoming.results]};
+          }
+        },
+        topRatedMovies: {
+          keyArgs: false,
+          merge(existing = {}, incoming) {
+            if (incoming.page <= existing.page) {
+              return existing.results || [];
+            }
+            return {...incoming, results: [...existing.results || [], ...incoming.results]};
+          }
+        }
+      }
+    }
+  }
+});
+
+const client = new ApolloClient({
+  uri: process.env.REACT_APP_GRAPHQL_URL,
+  cache
+});
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <ApolloProvider client={client}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </ApolloProvider>,
   document.getElementById('root')
 );
 
@@ -21,3 +67,5 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+export { client };

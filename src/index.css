@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './styles/carousel.css';
+@import './styles/movieItem.css';
+
+body {
+  @apply font-sans;
+}
